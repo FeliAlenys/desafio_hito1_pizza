@@ -1,0 +1,51 @@
+/* src/components/Navbar.css */
+
+.navbar {
+    background-color: #343a40 !important; /* Color oscuro similar al navbar de la imagen */
+    padding: 10px 20px; /* Asegura que el navbar tenga algo de espacio en los laterales */
+  }
+  
+  .navbar-brand {
+    font-size: 1.8rem; /* Tamaño del texto de la marca */
+    font-weight: bold;
+    color: white !important;
+  }
+  
+  .navbar-nav .nav-item .nav-link {
+    color: white !important;
+    font-size: 1.1rem;
+    margin-right: 15px; /* Espacio entre los enlaces */
+  }
+  
+  .navbar-nav .nav-item .nav-link:hover {
+    color: #f8f9fa !important; /* Color cuando se pasa el ratón */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: white; /* Color de la hamburguesa en pantallas pequeñas */
+  }
+  
+  .navbar-nav .nav-item button {
+    font-size: 1.2rem;
+    padding: 5px 15px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .navbar-nav .nav-item button:hover {
+    background-color: #218838;
+  }
+  
+  /* Estilo para iconos */
+  .navbar-nav .nav-item .nav-link svg {
+    margin-right: 5px;
+  }
+  
+  @media (max-width: 991px) {
+    .navbar-nav {
+      text-align: center; /* Centrar los elementos en dispositivos móviles */
+    }
+  }
+  
