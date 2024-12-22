@@ -1,5 +1,6 @@
 
 import { formatPrice } from "../utils/helpers";  // Importamos la función desde helpers.js
+import PropTypes from 'prop-types';
 
 const CardPizza = ({ name, price, ingredients, img }) => (
   <div className="card" style={{ width: "18rem", margin: "1rem" }}>
@@ -17,6 +18,13 @@ const CardPizza = ({ name, price, ingredients, img }) => (
     </div>
   </div>
 );
+
+CardPizza.propTypes = {
+  name: PropTypes.string.isRequired, // Asegúrate de que name sea obligatorio y de tipo string
+  price: PropTypes.number.isRequired, // Agrega validación para otras props
+  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+  img: PropTypes.string.isRequired,
+};
 
 export default CardPizza;
 
