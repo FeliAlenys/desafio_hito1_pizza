@@ -1,37 +1,26 @@
 import Header from '../components/Header';
 import CardPizza from '../components/CardPizza';
-import napolitana from "../assets/img/pizza-napólitana.jpg";
-import española from "../assets/img/pizza-española.jpg";
-import pepperoni from "../assets/img/pizza-pepperoni.jpg";
+import { pizzas } from "../pizzas"; // Importamos el array de pizzas desde pizzas.js
+// import napolitana from "../assets/img/pizza-napólitana.jpg";
+// import española from "../assets/img/pizza-española.jpg";
+// import pepperoni from "../assets/img/pizza-pepperoni.jpg";
 
 const Home = () => (
   <div className="container">
     <Header />
+    <h2 className="text-center my-4">¡Elige tus pizzas favoritas!</h2>
     <div className="row">
-      <div className="col-md-4">
-        <CardPizza
-          name="Napolitana"
-          price={5950}
-          ingredients={["mozzarella", "tomates", "jamón", "orégano"]}
-          img={napolitana}
-        />
-      </div>
-      <div className="col-md-4">
-        <CardPizza
-          name="Española"
-          price={6950}
-          ingredients={["mozzarella", "gorgonzola", "parmesano", "provolone"]}
-          img={española}
-        />
-      </div>
-      <div className="col-md-4">
-        <CardPizza
-          name="Pepperoni"
-          price={6950}
-          ingredients={["mozzarella", "pepperoni", "orégano"]}
-          img={pepperoni}
-        />
-      </div>
+      {pizzas.map((pizza) => (
+        <div className="col-md-4 mb-4" key={pizza.id}>
+          <CardPizza
+            name={pizza.name}
+            price={pizza.price}
+            ingredients={pizza.ingredients}
+            img={pizza.img}
+            desc={pizza.desc}
+          />
+        </div>
+      ))}
     </div>
   </div>
 );
