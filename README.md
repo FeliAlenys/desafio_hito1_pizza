@@ -1,16 +1,7 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 
 # Pizzería Mamma Mia
 
-## Descripción
+## Descripción Hito 2
 Aplicación de gestión de pizzería desarrollada con React, que incluye formularios de registro y login, navegación dinámica y diseño responsivo.
 
 ## Funcionalidades recientes
@@ -30,3 +21,31 @@ Aplicación de gestión de pizzería desarrollada con React, que incluye formula
 - React Router
 - Bootstrap
 - ESLint
+
+## Descripción HITO 3
+1. Se configuró el componente principal App.jsx para renderizar la barra de navegación (Navbar) y la página principal (Home).
+2. Se dejaron comentados los componentes Register, Login y Footer para hitos futuros.
+3. Se mantiene la estructura con React Router para manejar las rutas de la aplicación.
+
+## Cambios realizados en Home.jsx
+- Se utilizó el archivo pizzas.js como fuente de datos para cargar dinámicamente las pizzas en la página principal.
+- Se reemplazó el renderizado estático de tarjetas por un mapeo dinámico que recorre el array de pizzas.
+- Cada pizza muestra su nombre, precio, lista de ingredientes, descripción e imagen de manera dinámica.
+
+## Cambios realizados en CardPizza.jsx
+- Se agregó un renderizado dinámico de los ingredientes utilizando listas no ordenadas <ul>.
+- Se implementó una nueva prop desc para mostrar descripciones detalladas de las pizzas en las tarjetas.
+- Se utilizó PropTypes para validar las props recibidas, asegurando que los datos sean consistentes.
+
+## Cambios realizados en Cart.jsx
+- Creación de un componente dinámico para el carrito de compras.
+- Uso de useState para manejar la cantidad de pizzas en el carrito.
+- Implementación de botones para aumentar/disminuir cantidades y eliminación automática cuando la cantidad llega a 0.
+- Cálculo y renderización del precio total del carrito.
+- Inclusión de un botón "Pagar" para hitos futuros.
+
+## Cambios realizados en pizzas.js
+- Se incorpora pizzas.js a utils
+- Se integró el componente Cart en las rutas principales de la aplicación.
+- Se actualizó la barra de navegación para incluir un enlace al carrito.
+- Se verificó la funcionalidad de navegación entre las rutas.

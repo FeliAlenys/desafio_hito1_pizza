@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import CardPizza from '../components/CardPizza';
-import { pizzas } from "../pizzas"; // Importamos el array de pizzas desde pizzas.js
+import { pizzas } from "../utils/pizzas"; // Importamos el array de pizzas desde pizzas.js
 // import napolitana from "../assets/img/pizza-napólitana.jpg";
 // import española from "../assets/img/pizza-española.jpg";
 // import pepperoni from "../assets/img/pizza-pepperoni.jpg";
