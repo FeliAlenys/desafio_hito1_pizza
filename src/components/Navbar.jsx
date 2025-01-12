@@ -41,8 +41,8 @@ const Navbar = () => {
                   <Link className="nav-link" to="/register"><FaUserPlus /> Register</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/cart">Carrito</Link> {/* Nuevo enlace */}
-                  </li>
+                <Link className="nav-link" to="/cart">Carrito</Link> {/* Nuevo enlace */}
+                </li>
               </>
             )}
             <li className="nav-item">
