@@ -1,55 +1,55 @@
-import { useCart } from "../context/CartContext";
-import { useState } from "react";
-import { formatPrice } from "../utils/helpers";
+//import { useState } from "react";
+import { Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+//import { formatPrice } from "../utils/helpers";
+import { useCart } from '../context/CartContext.jsx';
 import PropTypes from "prop-types";
 
-const CardPizza = ({ name, price, ingredients, img, desc, id }) => {
-  const [showFullDesc, setShowFullDesc] = useState(false);
-  const { addToCart } = useCart(); // Usamos el hook personalizado
+const CardPizza = ({ pizza }) => {
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
 
-  const toggleDescription = () => setShowFullDesc(!showFullDesc);
+  const handleViewDetails = () => {
+    navigate(`/pizza/${pizza.id}`);
+  };
+
+  const handleAddToCart = () => {
+    addToCart(pizza);
+  };
 
   return (
-    <div className="card" style={{ width: "18rem", margin: "1rem" }}>
-      <img src={img} className="card-img-top" alt={`Imagen de ${name}`} />
-      <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <p className="card-text">
-          <strong>Descripción:</strong>{" "}
-          {showFullDesc ? desc : `${desc.substring(0, 60)}...`}
-        </p>
-        <p className="card-text">
-          <strong>Ingredientes:</strong> {/*ingredients.join(", ")*/}
-        </p>
-        <ul>
-          {ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-        ))}
-        </ul>
-        <button className="btn btn-link p-0" onClick={toggleDescription}>
-          {showFullDesc ? "Ver menos" : "Ver más"}
-        </button>
-        <p className="card-text">
-          <strong>Precio:</strong> {formatPrice(price)}
-        </p>
-        <button
-          className="btn btn-success mt-2"
-          onClick={() => addToCart({ id, name, price, img })}
-        >
-          Añadir
-        </button>
-      </div>
-    </div>
+    <Card className="h-100">
+      <Card.Img variant="top" src={pizza.img} alt={pizza.name} />
+      <Card.Body className="d-flex flex-column">
+        <Card.Title>{pizza.name}</Card.Title>
+        <Card.Text>
+          <strong>Ingredientes:</strong>
+          <ul>
+            {pizza.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+        </Card.Text>
+        <Card.Text className="mt-auto">
+          <strong>Precio: ${pizza.price}</strong>
+        </Card.Text>
+        <div className="mt-auto d-flex justify-content-between">
+          <Button variant="primary" onClick={handleViewDetails}>Ver Más</Button>
+          <Button variant="danger" onClick={handleAddToCart}>Añadir</Button>
+        </div>
+      </Card.Body>
+    </Card>
   );
 };
 
 CardPizza.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
-  img: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  pizza: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+    price: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default CardPizza;
