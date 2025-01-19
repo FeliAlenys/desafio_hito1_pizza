@@ -1,4 +1,4 @@
-//import Header from '../components/Header';
+import Header from '../components/Header';
 import { Container, Row, Col } from "react-bootstrap";
 import CardPizza from "../components/CardPizza";
 import { usePizzas } from "../context/PizzaContext";
@@ -12,16 +12,19 @@ const Home = () => {
   if (error) return <div>Error al cargar las pizzas: {error}</div>;
 
   return (
-    <Container>
-      <h1 className="text-center my-4">Nuestras Pizzas</h1>
-      <Row xs={1} md={2} lg={3} className="g-4">
-        {pizzas.map((pizza) => (
-          <Col key={pizza.id}>
-            <CardPizza pizza={pizza} />
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <h1 className="text-center my-4">Nuestras Pizzas</h1>
+        <Row xs={1} md={2} lg={3} className="g-4">
+          {pizzas.map((pizza) => (
+            <Col key={pizza.id}>
+              <CardPizza pizza={pizza} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
   );
 };
 
