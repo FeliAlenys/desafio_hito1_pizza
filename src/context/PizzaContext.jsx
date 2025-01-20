@@ -1,10 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import  { createContext, useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { pizzas as pizzasData } from '../utils/pizzas';
 
 const PizzaContext = createContext();
-
-export const usePizzas = () => useContext(PizzaContext);
 
 export const PizzaProvider = ({ children }) => {
   const [pizzas, setPizzas] = useState([]);
@@ -12,16 +9,22 @@ export const PizzaProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulando una carga asíncrona
-    setTimeout(() => {
+    const fetchPizzas = async () => {
       try {
-        setPizzas(pizzasData);
+        const response = await fetch('http://localhost:5000/api/pizzas');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPizzas(data);
         setLoading(false);
-      } catch (err) {
-        setError(`Error al cargar las pizzas: ${err.message}`);
+      } catch (error) {
+        setError(error.message);
         setLoading(false);
       }
-    }, 1000);
+    };
+
+    fetchPizzas();
   }, []);
 
   return (
@@ -32,5 +35,7 @@ export const PizzaProvider = ({ children }) => {
 };
 
 PizzaProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+    children: PropTypes.node.isRequired,
+  };
+
+export const usePizzas = () => useContext(PizzaContext);
