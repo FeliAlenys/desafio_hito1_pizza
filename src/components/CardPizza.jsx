@@ -22,14 +22,12 @@ const CardPizza = ({ pizza }) => {
       <Card.Img variant="top" src={pizza.img} alt={pizza.name} />
       <Card.Body className="d-flex flex-column">
         <Card.Title>{pizza.name}</Card.Title>
-        <Card.Text>
-          <strong>Ingredientes:</strong>
-          <ul>
-            {pizza.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
-        </Card.Text>
+        <Card.Text><strong>Ingredientes:</strong></Card.Text>
+        <ul>
+          {pizza.ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+          ))}
+        </ul>
         <Card.Text className="mt-auto">
           <strong>Precio: ${pizza.price}</strong>
         </Card.Text>

@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import CartProvider from "./context/CartProvider";
 import Navbar from "./components/Navbar";
 import { PizzaProvider } from "./context/PizzaContext";
+import Pizza from "./components/Pizza";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/pizza/:id" element={<Pizza />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />
