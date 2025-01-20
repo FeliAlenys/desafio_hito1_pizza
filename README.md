@@ -49,3 +49,8 @@ Aplicación de gestión de pizzería desarrollada con React, que incluye formula
 - Se integró el componente Cart en las rutas principales de la aplicación.
 - Se actualizó la barra de navegación para incluir un enlace al carrito.
 - Se verificó la funcionalidad de navegación entre las rutas.
+
+## Descripción HITO 4
+- Utilización de la API
+- Modificación del home.jsx
+- Creacion y utilizacion de pizza.jsx
