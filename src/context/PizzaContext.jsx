@@ -1,7 +1,9 @@
-import  { createContext, useState, useContext, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const PizzaContext = createContext();
+
+export const usePizzas = () => useContext(PizzaContext);
 
 export const PizzaProvider = ({ children }) => {
   const [pizzas, setPizzas] = useState([]);
@@ -19,11 +21,11 @@ export const PizzaProvider = ({ children }) => {
         setPizzas(data);
         setLoading(false);
       } catch (error) {
+        console.error('Error al obtener las pizzas:', error);
         setError(error.message);
         setLoading(false);
       }
     };
-
     fetchPizzas();
   }, []);
 
@@ -35,7 +37,7 @@ export const PizzaProvider = ({ children }) => {
 };
 
 PizzaProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  children: PropTypes.node.isRequired,
+};
 
-export const usePizzas = () => useContext(PizzaContext);
+export { PizzaContext };

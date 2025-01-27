@@ -7,7 +7,7 @@ const Pizza = () => {
   const [pizza, setPizza] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { id } = useParams();
+  const { id } = useParams();    // Usa el id para obtener los detalles de la pizza específica
   const { addToCart } = useCart();
 
   useEffect(() => {

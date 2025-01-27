@@ -1,14 +1,18 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Home from "./pages/Home";
-import Cart from "./components/Cart";
-import Footer from "./components/Footer";
-import CartProvider from "./context/CartProvider";
-import Navbar from "./components/Navbar";
+//import Cart from "./components/Cart";
+//import CartProvider from "./context/CartProvider";
+import { CartProvider } from "./context/CartContext";
 import { PizzaProvider } from "./context/PizzaContext";
-import Pizza from "./components/Pizza";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Pizza from "./pages/Pizza";
+import Cart from "./pages/Cart";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -22,6 +26,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/pizza/:id" element={<Pizza />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </Router>
