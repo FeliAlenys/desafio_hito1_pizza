@@ -82,3 +82,39 @@ Aplicación de gestión de pizzería desarrollada con React, que incluye formula
 - Crear páginas/componentes de Perfil, Inicio de Sesión, Registro y Cierre de Sesión.
 - Mejorar la funcionalidad del carrito de compras con características de agregar/eliminar artículos.
 - Implementar una página dedicada al carrito para una vista más detallada de los artículos.
+
+## Actualizaciones HITO 6
+
+### Implementación del Contexto del Carrito
+- Se creó un nuevo contexto `CartContext` para manejar el estado global del carrito.
+- Se implementó `useCart` hook para acceder fácilmente a las funciones del carrito en los componentes.
+- Se añadieron funciones para agregar, remover, actualizar cantidad y limpiar el carrito.
+- Se implementó la persistencia del carrito en el almacenamiento local (localStorage).
+
+### Mejoras en el Componente Home
+- Se actualizó la importación de `useCart` para utilizar el nuevo contexto del carrito.
+- Se pasó la función `addToCart` como prop al componente `CardPizza`.
+
+### Actualización del Componente CardPizza
+- Se modificó para utilizar la función `addToCart` del contexto del carrito.
+- Se actualizó el botón "Añadir" para utilizar la nueva funcionalidad del carrito.
+
+### Creación del Componente Cart
+- Se desarrolló un nuevo componente `Cart` para mostrar los items en el carrito.
+- Se implementaron funcionalidades para mostrar, actualizar cantidad y remover items del carrito.
+- Se añadió el cálculo del total de la compra.
+- Se incluyeron botones para vaciar el carrito e ir a pagar (funcionalidad futura).
+
+### Actualizaciones en la Estructura del Proyecto
+- Se reorganizaron los archivos para una mejor estructura del proyecto.
+- Se actualizaron las importaciones en varios componentes para reflejar la nueva estructura.
+
+### Correcciones y Mejoras
+- Se resolvieron problemas de importación duplicada en el componente Home.
+- Se realizaron ajustes en el estilo y la presentación de los componentes para mejorar la experiencia del usuario.
+
+### Próximos Pasos
+- Implementar la funcionalidad de pago.
+- Mejorar la interfaz de usuario del carrito.
+- Añadir más validaciones y manejo de errores.
+- Optimizar el rendimiento de la aplicación.

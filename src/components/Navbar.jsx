@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom';
 import { FaHome, FaUserCircle, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaShoppingCart } from 'react-icons/fa';
 import { formatPrice } from "../utils/helpers";
-import { useContext } from 'react';
-import { CartContext } from '../context/CartContext';
-import '../navbar.css';
+import { useCart } from '../hooks/useCart';
 
 const Navbar = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, cartTotal } = useCart();
   const token = false; // Esto debería venir del contexto de autenticación
-
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -44,12 +40,12 @@ const Navbar = () => {
             )}
             <li className="nav-item">
               <Link className="nav-link" to="/cart">
-                <FaShoppingCart /> Carrito
+                <FaShoppingCart /> Carrito ({cart.length})
               </Link>
             </li>
             <li className="nav-item">
               <Link className="btn btn-outline-light" to="/cart">
-                🛒 Total: {formatPrice(total)}
+                🛒 Total: {formatPrice(cartTotal)}
               </Link>
             </li>
           </ul>

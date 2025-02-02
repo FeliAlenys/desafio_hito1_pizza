@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../hooks/useCart';  // Mantenemos esta importación
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 const Pizza = () => {
   const [pizza, setPizza] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { id } = useParams();    // Usa el id para obtener los detalles de la pizza específica
+  const { id } = useParams();
   const { addToCart } = useCart();
 
   useEffect(() => {

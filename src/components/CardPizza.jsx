@@ -2,8 +2,9 @@
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 //import { formatPrice } from "../utils/helpers";
-import { useCart } from '../context/CartContext';
+//import { useCart } from '../context/CartContext';
 import PropTypes from "prop-types";
+import { useCart } from '../hooks/useCart';
 
 const CardPizza = ({ pizza }) => {
   const { addToCart } = useCart();

@@ -1,15 +1,12 @@
 import { useCart } from '../context/CartContext';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { formatPrice } from '../utils/helpers'; 
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
-
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+  const { cart, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart();
 
   if (cart.length === 0) {
-    return <div>Tu carrito está vacío</div>;
+    return <Container><h2>Tu carrito está vacío</h2></Container>;
   }
 
   return (
@@ -24,7 +21,7 @@ const Cart = () => {
             <Col md={8}>
               <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
-                <Card.Text>Precio: ${item.price}</Card.Text>
+                <Card.Text>Precio: {formatPrice(item.price)}</Card.Text>
                 <Card.Text>Cantidad: {item.quantity}</Card.Text>
                 <Button variant="danger" onClick={() => removeFromCart(item.id)}>Eliminar</Button>
                 <Button variant="secondary" onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</Button>
@@ -35,7 +32,7 @@ const Cart = () => {
         </Card>
       ))}
       <div>
-        <h3>Total: ${calculateTotal()}</h3>
+        <h3>Total: {formatPrice(cartTotal)}</h3>
         <Button variant="primary" onClick={clearCart}>Vaciar Carrito</Button>
         <Button variant="success">Ir a Pagar</Button>
       </div>
