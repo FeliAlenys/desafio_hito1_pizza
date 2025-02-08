@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useCart } from '../hooks/useCart';  // Mantenemos esta importación
+import { useCart } from '../hooks/useCart';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 const Pizza = () => {

@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'; // Importe useNavigate
+import PropTypes from 'prop-types'; // Importamos PropTypes
+import { useUser } from '../context/useUser'; // Asegúrate de que la ruta sea correcta
 import '../form.css';
 
 const Login = () => {
@@ -8,6 +11,8 @@ const Login = () => {
   });
 
   const [message, setMessage] = useState("");
+  const { login } = useUser(); // Usamos el hook useUser
+  const navigate = useNavigate(); // Inicialice useNavigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +34,10 @@ const Login = () => {
       return;
     }
 
+    // Aquí simularemos un login exitoso
+    login(); // Llamamos a la función login del contexto
     setMessage("Autenticación exitosa.");
+    navigate('/'); // Redirigimos al usuario a la página principal
   };
 
   return (
@@ -63,6 +71,10 @@ const Login = () => {
       {message && <p className="message">{message}</p>}
     </div>
   );
+};
+
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired
 };
 
 export default Login;

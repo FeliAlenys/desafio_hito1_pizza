@@ -1,39 +1,39 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-//import Cart from "./components/Cart";
-//import CartProvider from "./context/CartProvider";
+import { BrowserRouter as Router } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { PizzaProvider } from "./context/PizzaContext";
+import { UserProvider } from './context/UserContext';
+import AppRoutes from './routes/AppRoutes';
+import { useState } from 'react';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Pizza from "./pages/Pizza";
-import Cart from "./pages/Cart";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import NotFound from "./pages/NotFound";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
+
   return (
-    <PizzaProvider>
-      <CartProvider>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/pizza/:id" element={<Pizza />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/404" element={<NotFound />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </CartProvider>
-    </PizzaProvider>
+    <UserProvider>
+      <PizzaProvider>
+        <CartProvider>
+          <Router>
+            <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+            <AppRoutes 
+              isAuthenticated={isAuthenticated} 
+              onLogin={handleLogin}
+            />
+            <Footer />
+          </Router>
+        </CartProvider>
+      </PizzaProvider>
+    </UserProvider>
   );
 }
 

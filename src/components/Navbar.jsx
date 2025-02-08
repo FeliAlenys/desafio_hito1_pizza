@@ -1,11 +1,18 @@
-import { Link } from 'react-router-dom';
-import { FaHome, FaUserCircle, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaShoppingCart } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 import { formatPrice } from "../utils/helpers";
+import { FaHome, FaUserCircle, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaShoppingCart } from 'react-icons/fa';
 import { useCart } from '../hooks/useCart';
+import { useUser } from '../context/useUser';
 
 const Navbar = () => {
   const { cart, cartTotal } = useCart();
-  const token = false; // Esto debería venir del contexto de autenticación
+  const { user, logout } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/')
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,13 +26,13 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/"><FaHome /> Home</Link>
             </li>
-            {token ? (
+            {user ? (
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/profile"><FaUserCircle /> Profile</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/logout"><FaSignOutAlt /> Logout</Link>
+                  <button className="nav-link btn btn-link" onClick={handleLogout}><FaSignOutAlt /> Logout</button>
                 </li>
               </>
             ) : (

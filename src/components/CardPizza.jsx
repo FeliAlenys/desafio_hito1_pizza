@@ -1,6 +1,6 @@
 //import { useState } from "react";
 import { Card, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { /*useNavigate,*/ Link } from 'react-router-dom';
 //import { formatPrice } from "../utils/helpers";
 //import { useCart } from '../context/CartContext';
 import PropTypes from "prop-types";
@@ -8,11 +8,13 @@ import { useCart } from '../hooks/useCart';
 
 const CardPizza = ({ pizza }) => {
   const { addToCart } = useCart();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
+  /*
   const handleViewDetails = () => {
     navigate(`/pizza/${pizza.id}`);
   };
+  */
 
   const handleAddToCart = () => {
     addToCart(pizza);
@@ -33,9 +35,8 @@ const CardPizza = ({ pizza }) => {
           <strong>Precio: ${pizza.price}</strong>
         </Card.Text>
         <div className="mt-auto d-flex justify-content-between">
-          <Button variant="primary" onClick={handleViewDetails}>Ver Más</Button>
-          {/*<Button variant="danger" onClick={handleAddToCart}>Añadir</Button>*/}
-          <button onClick={handleAddToCart}>Añadir al carrito</button>
+        <Link to={`/pizza/${pizza.id}`} className="btn btn-primary">Ver Más</Link>
+        <Button variant="danger" onClick={handleAddToCart}>Añadir al carrito</Button>
         </div>
       </Card.Body>
     </Card>
