@@ -6,12 +6,12 @@ import { useUser } from '../context/useUser';
 
 const Navbar = () => {
   const { cart, cartTotal } = useCart();
-  const { user, logout } = useUser();
+  const { user, logout } = useUser(); // Utilice el hook useUser para obtener user y logout
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();
-    navigate('/')
+    logout(); // Se llama a la función logout del UserContext
+    navigate('/') // Redirijo al usuario a la página principal después del logout
   };
 
   return (

@@ -1,9 +1,11 @@
 import { useCart } from '../context/CartContext';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import { formatPrice } from '../utils/helpers'; 
+import { useUser } from '../context/useUser'; // Paso 1: Importar el hook useUser
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart();
+  const { user } = useUser(); // Paso 2: Obtener el usuario del contexto
 
   if (cart.length === 0) {
     return <Container><h2>Tu carrito está vacío</h2></Container>;
@@ -34,7 +36,14 @@ const Cart = () => {
       <div>
         <h3>Total: {formatPrice(cartTotal)}</h3>
         <Button variant="primary" onClick={clearCart}>Vaciar Carrito</Button>
-        <Button variant="success">Ir a Pagar</Button>
+        {/* Paso 3: Modificar el botón de pago */}
+        <Button 
+          variant="success" 
+          disabled={!user} // Deshabilitar si no hay usuario
+          onClick={() => console.log('Procesando pago...')} // Añadir lógica de pago aquí
+        >
+          {user ? 'Ir a Pagar' : 'Inicia sesión para pagar'}
+        </Button>
       </div>
     </Container>
   );
