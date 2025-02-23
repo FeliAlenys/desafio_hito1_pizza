@@ -2,6 +2,7 @@ import { useCart } from '../context/CartContext';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import { formatPrice } from '../utils/helpers'; 
 import { useUser } from '../context/useUser'; // Paso 1: Importar el hook useUser
+//import { useUser } from '../context/UserContext';
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart();

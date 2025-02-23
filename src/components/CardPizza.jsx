@@ -6,6 +6,7 @@ import { /*useNavigate,*/ Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { useCart } from '../hooks/useCart';
 
+
 const CardPizza = ({ pizza }) => {
   const { addToCart } = useCart();
   //const navigate = useNavigate();

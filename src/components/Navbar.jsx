@@ -2,7 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { formatPrice } from "../utils/helpers";
 import { FaHome, FaUserCircle, FaSignOutAlt, FaSignInAlt, FaUserPlus, FaShoppingCart } from 'react-icons/fa';
 import { useCart } from '../hooks/useCart';
-import { useUser } from '../context/useUser';
+import { useUser } from '../hooks/useUser';;
+//import { useUser } from '../context/UserContext';
 
 const Navbar = () => {
   const { cart, cartTotal } = useCart();

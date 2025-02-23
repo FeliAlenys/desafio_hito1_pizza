@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useUser } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 import '../form.css';
 
 const Register = () => {
@@ -9,13 +11,15 @@ const Register = () => {
   });
 
   const [message, setMessage] = useState("");
+  const { register } = useUser();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { email, password, confirmPassword } = formData;
@@ -33,6 +37,14 @@ const Register = () => {
     if (password !== confirmPassword) {
       setMessage("Las contraseñas no coinciden.");
       return;
+    }
+
+    const success = await register(email, password);
+    if (success) {
+      setMessage("Registro exitoso.");
+      navigate('/');
+    } else {
+      setMessage("Error en el registro. Por favor, intente de nuevo.");
     }
 
     setMessage("Registro exitoso.");

@@ -118,3 +118,11 @@ Aplicación de gestión de pizzería desarrollada con React, que incluye formula
 - Mejorar la interfaz de usuario del carrito.
 - Añadir más validaciones y manejo de errores.
 - Optimizar el rendimiento de la aplicación.
+
+## Actualizaciones HITO 8
+
+### Implementacion de JWT
+- implementa los métodos para hacer login y register, consumiendo las rutas /api/auth/login y /api/auth/register
+-  implementa un método para hacer logout
+-  implementa un método para obtener el perfil del usuario autenticado
+- implementa el método para enviar el carrito de compras al backend, consumiendo la ruta /api/checkouts.

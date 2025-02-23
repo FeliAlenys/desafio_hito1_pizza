@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'; // Importe useNavigate
 import PropTypes from 'prop-types'; // Importamos PropTypes
-import { useUser } from '../context/useUser'; // Asegúrate de que la ruta sea correcta
+//import { useUser } from '../context/UserContext';
+import { useUser } from '../hooks/useUser';
 import '../form.css';
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { email, password } = formData;
@@ -32,6 +33,14 @@ const Login = () => {
     if (password.length < 6) {
       setMessage("La contraseña debe tener al menos 6 caracteres.");
       return;
+    }
+
+    const success = await login(email, password);
+    if (success) {
+      setMessage("Autenticación exitosa.");
+      navigate('/');
+    } else {
+      setMessage("Error en la autenticación. Por favor, intente de nuevo.");
     }
 
     // Aquí simularemos un login exitoso
